@@ -1,0 +1,40 @@
+# Plugins/testplugin/testplugin.uvn
+
+PLUGIN_NAME = "LowCut & Dynamic Gain"
+ENABLED = True  # Trueで有効化、Falseでスキップ
+
+# --- GUI設定定義スキーマ ---
+# GUI画面に自動で入力フォームを構築します
+UI_SCHEMA = [
+    {"key": "cutoff", "label": "ローカット周波数 (Hz)", "default": 80.0, "type": "entry"},
+    {"key": "gain_db", "label": "追加ゲイン (dB)", "default": 1.5, "type": "entry"},
+    {"key": "enable_gate", "label": "ノイズゲート有効化", "default": True, "type": "checkbox"}
+]
+
+def ping():
+    """プラグインが読み込まれた際に実行される導通テスト"""
+    logger("[TestPlugin] Ping received -> Pong! 正常にプラグインがロードされました。") # type: ignore
+    return "pong"
+
+def process_audio_hook(data, sample_rate, filename, params=None):
+    """
+    メイン処理から呼び出されるフック関数
+    params からGUIで設定された値を受け取ることができます
+    """
+    if params is None:
+        params = {}
+
+    cutoff = float(params.get("cutoff", 80.0))
+    gain_db = float(params.get("gain_db", 1.5))
+    enable_gate = bool(params.get("enable_gate", True))
+
+    # インタープリターから自動注入された関数を直接呼び出し
+    data = highpass_filter(data, cutoff=cutoff, sr=sample_rate) # type: ignore
+    data = apply_gain_db(data, gain_db=gain_db) # type: ignore
+
+    if enable_gate and "noise_gate" in globals():
+        data = noise_gate(data, threshold_db=-45.0) # type: ignore
+
+    data = clip_protection(data) # type: ignore
+
+    return data, sample_rate, filename
