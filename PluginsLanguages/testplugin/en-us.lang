@@ -1,0 +1,5 @@
+# testplugin language resource
+plugin.name=LowCut & Dynamic Gain
+ui.cutoff=Low-cut frequency (Hz)
+ui.gain_db=Additional gain (dB)
+ui.enable_gate=Enable noise gate

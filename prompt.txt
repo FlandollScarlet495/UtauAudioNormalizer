@@ -1,0 +1,253 @@
+python setup.py build_ext --inplace                                                                                                                                              
+core_python_files を .pyd 化しますか？ [Y/n]: y
+Plugins 配下の .py を .pyd 化しますか？ [Y/n]: y
+[初期化] UtauVolumeNormalizer/ フォルダを新規作成しました。
+[コピー作成] Plugins/ -> plugins_pyd/
+[事前作成] ルート作業フォルダ: uvn_plugin_runtime/
+[事前作成] ルート作業フォルダ: testplugindefine/
+
+--- Cython コンパイル開始 (対象ファイル数: 5) ---
+Compiling core_python_files\uvn_audio.py because it changed.
+Compiling core_python_files\uvn_gui.py because it changed.
+Compiling core_python_files\uvn_utility.py because it changed.
+Compiling core_python_files\uvn_plugin_runtime\decoder.py because it changed.
+Compiling plugins_pyd\testplugindefine\testplugin_dsp.py because it changed.
+[1/5] Cythonizing core_python_files\uvn_audio.py
+[2/5] Cythonizing core_python_files\uvn_gui.py
+[3/5] Cythonizing core_python_files\uvn_plugin_runtime\decoder.py
+[4/5] Cythonizing core_python_files\uvn_utility.py
+[5/5] Cythonizing plugins_pyd\testplugindefine\testplugin_dsp.py
+running build_ext
+building 'uvn_audio' extension
+creating build
+creating build\temp.win-amd64-3.10
+creating build\temp.win-amd64-3.10\Release
+creating build\temp.win-amd64-3.10\Release\core_python_files
+C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -IC:\program1\python\UtauAudioNormalizer\.venv\include -IC:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\include -IC:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\Include -IC:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\include -IC:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\ATLMFC\include -IC:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\VS\include -IC:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\winrt -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\cppwinrt -IC:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um /Tccore_python_files\uvn_audio.c /Fobuild\temp.win-amd64-3.10\Release\core_python_files\uvn_audio.obj
+uvn_audio.c
+creating C:\program1\python\UtauAudioNormalizer\build\lib.win-amd64-3.10
+C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\bin\HostX86\x64\link.exe /nologo /INCREMENTAL:NO /LTCG /DLL /MANIFEST:EMBED,ID=2 /MANIFESTUAC:NO /LIBPATH:C:\program1\python\UtauAudioNormalizer\.venv\libs /LIBPATH:C:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\libs /LIBPATH:C:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310 /LIBPATH:C:\program1\python\UtauAudioNormalizer\.venv\PCbuild\amd64 /LIBPATH:C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\ATLMFC\lib\x64 /LIBPATH:C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\lib\x64 /LIBPATH:C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\lib\um\x64 /LIBPATH:C:\Program Files (x86)\Windows Kits\10\lib\10.0.26100.0\ucrt\x64 /LIBPATH:C:\Program Files (x86)\Windows Kits\10\\lib\10.0.26100.0\\um\x64 /EXPORT:PyInit_uvn_audio build\temp.win-amd64-3.10\Release\core_python_files\uvn_audio.obj /OUT:build\lib.win-amd64-3.10\uvn_audio.cp310-win_amd64.pyd /IMPLIB:build\temp.win-amd64-3.10\Release\core_python_files\uvn_audio.cp310-win_amd64.lib
+   ライブラリ build\temp.win-amd64-3.10\Release\core_python_files\uvn_audio.cp310-win_amd64.lib とオブジェクト build\temp.win-amd64-3.10\Release\core_python_files\uvn_audio.cp310-win_amd64.exp を作成中
+コード生成しています。
+コード生成が終了しました。
+building 'uvn_gui' extension
+C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -IC:\program1\python\UtauAudioNormalizer\.venv\include -IC:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\include -IC:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\Include -IC:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\include -IC:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\ATLMFC\include -IC:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\VS\include -IC:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\winrt -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\cppwinrt -IC:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um /Tccore_python_files\uvn_gui.c /Fobuild\temp.win-amd64-3.10\Release\core_python_files\uvn_gui.obj
+uvn_gui.c
+C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\bin\HostX86\x64\link.exe /nologo /INCREMENTAL:NO /LTCG /DLL /MANIFEST:EMBED,ID=2 /MANIFESTUAC:NO /LIBPATH:C:\program1\python\UtauAudioNormalizer\.venv\libs /LIBPATH:C:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\libs /LIBPATH:C:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310 /LIBPATH:C:\program1\python\UtauAudioNormalizer\.venv\PCbuild\amd64 /LIBPATH:C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\ATLMFC\lib\x64 /LIBPATH:C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\lib\x64 /LIBPATH:C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\lib\um\x64 /LIBPATH:C:\Program Files (x86)\Windows Kits\10\lib\10.0.26100.0\ucrt\x64 /LIBPATH:C:\Program Files (x86)\Windows Kits\10\\lib\10.0.26100.0\\um\x64 /EXPORT:PyInit_uvn_gui build\temp.win-amd64-3.10\Release\core_python_files\uvn_gui.obj /OUT:build\lib.win-amd64-3.10\uvn_gui.cp310-win_amd64.pyd /IMPLIB:build\temp.win-amd64-3.10\Release\core_python_files\uvn_gui.cp310-win_amd64.lib
+   ライブラリ build\temp.win-amd64-3.10\Release\core_python_files\uvn_gui.cp310-win_amd64.lib とオブジェクト build\temp.win-amd64-3.10\Release\core_python_files\uvn_gui.cp310-win_amd64.exp を作成中
+コード生成しています。
+コード生成が終了しました。
+building 'uvn_utility' extension
+C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -IC:\program1\python\UtauAudioNormalizer\.venv\include -IC:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\include -IC:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\Include -IC:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\include -IC:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\ATLMFC\include -IC:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\VS\include -IC:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\winrt -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\cppwinrt -IC:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um /Tccore_python_files\uvn_utility.c /Fobuild\temp.win-amd64-3.10\Release\core_python_files\uvn_utility.obj
+uvn_utility.c
+C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\bin\HostX86\x64\link.exe /nologo /INCREMENTAL:NO /LTCG /DLL /MANIFEST:EMBED,ID=2 /MANIFESTUAC:NO /LIBPATH:C:\program1\python\UtauAudioNormalizer\.venv\libs /LIBPATH:C:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\libs /LIBPATH:C:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310 /LIBPATH:C:\program1\python\UtauAudioNormalizer\.venv\PCbuild\amd64 /LIBPATH:C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\ATLMFC\lib\x64 /LIBPATH:C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\lib\x64 /LIBPATH:C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\lib\um\x64 /LIBPATH:C:\Program Files (x86)\Windows Kits\10\lib\10.0.26100.0\ucrt\x64 /LIBPATH:C:\Program Files (x86)\Windows Kits\10\\lib\10.0.26100.0\\um\x64 /EXPORT:PyInit_uvn_utility build\temp.win-amd64-3.10\Release\core_python_files\uvn_utility.obj /OUT:build\lib.win-amd64-3.10\uvn_utility.cp310-win_amd64.pyd /IMPLIB:build\temp.win-amd64-3.10\Release\core_python_files\uvn_utility.cp310-win_amd64.lib
+   ライブラリ build\temp.win-amd64-3.10\Release\core_python_files\uvn_utility.cp310-win_amd64.lib とオブジェクト build\temp.win-amd64-3.10\Release\core_python_files\uvn_utility.cp310-win_amd64.exp を作成中
+コード生成しています。
+コード生成が終了しました。
+building 'uvn_plugin_runtime.decoder' extension
+creating build\temp.win-amd64-3.10\Release\core_python_files\uvn_plugin_runtime
+C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -IC:\program1\python\UtauAudioNormalizer\.venv\include -IC:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\include -IC:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\Include -IC:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\include -IC:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\ATLMFC\include -IC:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\VS\include -IC:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\winrt -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\cppwinrt -IC:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um /Tccore_python_files\uvn_plugin_runtime\decoder.c /Fobuild\temp.win-amd64-3.10\Release\core_python_files\uvn_plugin_runtime\decoder.obj
+decoder.c
+creating C:\program1\python\UtauAudioNormalizer\build\lib.win-amd64-3.10\uvn_plugin_runtime
+C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\bin\HostX86\x64\link.exe /nologo /INCREMENTAL:NO /LTCG /DLL /MANIFEST:EMBED,ID=2 /MANIFESTUAC:NO /LIBPATH:C:\program1\python\UtauAudioNormalizer\.venv\libs /LIBPATH:C:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\libs /LIBPATH:C:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310 /LIBPATH:C:\program1\python\UtauAudioNormalizer\.venv\PCbuild\amd64 /LIBPATH:C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\ATLMFC\lib\x64 /LIBPATH:C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\lib\x64 /LIBPATH:C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\lib\um\x64 /LIBPATH:C:\Program Files (x86)\Windows Kits\10\lib\10.0.26100.0\ucrt\x64 /LIBPATH:C:\Program Files (x86)\Windows Kits\10\\lib\10.0.26100.0\\um\x64 /EXPORT:PyInit_decoder build\temp.win-amd64-3.10\Release\core_python_files\uvn_plugin_runtime\decoder.obj /OUT:build\lib.win-amd64-3.10\uvn_plugin_runtime\decoder.cp310-win_amd64.pyd /IMPLIB:build\temp.win-amd64-3.10\Release\core_python_files\uvn_plugin_runtime\decoder.cp310-win_amd64.lib
+   ライブラリ build\temp.win-amd64-3.10\Release\core_python_files\uvn_plugin_runtime\decoder.cp310-win_amd64.lib とオブジェクト build\temp.win-amd64-3.10\Release\core_python_files\uvn_plugin_runtime\decoder.cp310-win_amd64.expを作成中
+コード生成しています。
+コード生成が終了しました。
+building 'testplugin_dsp' extension
+creating build\temp.win-amd64-3.10\Release\plugins_pyd
+creating build\temp.win-amd64-3.10\Release\plugins_pyd\testplugindefine
+C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -IC:\program1\python\UtauAudioNormalizer\.venv\include -IC:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\include -IC:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\Include -IC:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\include -IC:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\ATLMFC\include -IC:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\VS\include -IC:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\winrt -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\cppwinrt -IC:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um /Tcplugins_pyd\testplugindefine\testplugin_dsp.c /Fobuild\temp.win-amd64-3.10\Release\plugins_pyd\testplugindefine\testplugin_dsp.obj
+testplugin_dsp.c
+C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\bin\HostX86\x64\link.exe /nologo /INCREMENTAL:NO /LTCG /DLL /MANIFEST:EMBED,ID=2 /MANIFESTUAC:NO /LIBPATH:C:\program1\python\UtauAudioNormalizer\.venv\libs /LIBPATH:C:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\libs /LIBPATH:C:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310 /LIBPATH:C:\program1\python\UtauAudioNormalizer\.venv\PCbuild\amd64 /LIBPATH:C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\ATLMFC\lib\x64 /LIBPATH:C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\lib\x64 /LIBPATH:C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\lib\um\x64 /LIBPATH:C:\Program Files (x86)\Windows Kits\10\lib\10.0.26100.0\ucrt\x64 /LIBPATH:C:\Program Files (x86)\Windows Kits\10\\lib\10.0.26100.0\\um\x64 /EXPORT:PyInit_testplugin_dsp build\temp.win-amd64-3.10\Release\plugins_pyd\testplugindefine\testplugin_dsp.obj /OUT:build\lib.win-amd64-3.10\testplugin_dsp.cp310-win_amd64.pyd /IMPLIB:build\temp.win-amd64-3.10\Release\plugins_pyd\testplugindefine\testplugin_dsp.cp310-win_amd64.lib
+   ライブラリ build\temp.win-amd64-3.10\Release\plugins_pyd\testplugindefine\testplugin_dsp.cp310-win_amd64.lib とオブジェクト build\temp.win-amd64-3.10\Release\plugins_pyd\testplugindefine\testplugin_dsp.cp310-win_amd64.exp を作成中
+コード生成しています。
+コード生成が終了しました。
+copying build\lib.win-amd64-3.10\uvn_audio.cp310-win_amd64.pyd -> 
+copying build\lib.win-amd64-3.10\uvn_gui.cp310-win_amd64.pyd -> 
+copying build\lib.win-amd64-3.10\uvn_utility.cp310-win_amd64.pyd -> 
+copying build\lib.win-amd64-3.10\uvn_plugin_runtime\decoder.cp310-win_amd64.pyd -> uvn_plugin_runtime
+copying build\lib.win-amd64-3.10\testplugin_dsp.cp310-win_amd64.pyd -> 
+
+--- Cythonビルド後処理（移動・クリーンアップ）を開始します ---
+[移動完了] testplugin_dsp.cp310-win_amd64.pyd -> core_pyd\testplugin_dsp.cp310-win_amd64.pyd
+[移動完了] uvn_audio.cp310-win_amd64.pyd -> core_pyd\uvn_audio.cp310-win_amd64.pyd
+[移動完了] uvn_gui.cp310-win_amd64.pyd -> core_pyd\uvn_gui.cp310-win_amd64.pyd
+[移動完了] uvn_utility.cp310-win_amd64.pyd -> core_pyd\uvn_utility.cp310-win_amd64.pyd
+[移動完了] uvn_plugin_runtime\decoder.cp310-win_amd64.pyd -> core_pyd\uvn_plugin_runtime\decoder.cp310-win_amd64.pyd
+[キャッシュ削除] uvn_audio.c
+[キャッシュ削除] uvn_gui.c
+[キャッシュ削除] uvn_utility.c
+[キャッシュ削除] decoder.c
+[キャッシュ削除] testplugin_dsp.c
+[一時フォルダ削除] .\uvn_plugin_runtime/
+[一時フォルダ削除] .\testplugindefine/
+[キャッシュ削除] build/ フォルダ
+
+--- [Step 2] PyInstaller ビルドを開始します (utau_volume_normalizer_spec/utau_volume_normalizer.spec) ---
+95 INFO: PyInstaller: 6.22.2, contrib hooks: 2026.7
+95 INFO: Python: 3.10.1
+104 INFO: Platform: Windows-10-10.0.26200-SP0
+105 INFO: Python environment: C:\program1\python\UtauAudioNormalizer\.venv
+110 INFO: Module search paths (PYTHONPATH):
+['C:\\program1\\python\\UtauAudioNormalizer',
+ 'C:\\Users\\nakam_6awg8mn\\AppData\\Local\\Programs\\Python\\Python310\\python310.zip',
+ 'C:\\Users\\nakam_6awg8mn\\AppData\\Local\\Programs\\Python\\Python310\\DLLs',
+ 'C:\\Users\\nakam_6awg8mn\\AppData\\Local\\Programs\\Python\\Python310\\lib',
+ 'C:\\Users\\nakam_6awg8mn\\AppData\\Local\\Programs\\Python\\Python310',
+ 'C:\\program1\\python\\UtauAudioNormalizer\\.venv',
+ 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages',
+ 'C:\\program1\\python\\UtauAudioNormalizer']
+362 INFO: checking Analysis
+362 INFO: Building Analysis because Analysis-00.toc is non existent
+362 INFO: Looking for Python shared library...
+362 INFO: Using Python shared library: C:\Users\nakam_6awg8mn\AppData\Local\Programs\Python\Python310\python310.dll
+362 INFO: Running Analysis Analysis-00.toc
+362 INFO: Target bytecode optimization level: 0
+362 INFO: Initializing module dependency graph...
+363 INFO: Initializing module graph hook caches...
+376 INFO: Analyzing modules for base_library.zip ...
+820 INFO: Processing standard module hook 'hook-heapq.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+855 INFO: Processing standard module hook 'hook-encodings.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+1189 INFO: Processing standard module hook 'hook-math.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+1585 INFO: Processing standard module hook 'hook-pickle.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+2140 INFO: Caching module dependency graph...
+2164 INFO: Analyzing C:\program1\python\UtauAudioNormalizer\utau_volume_normalizer.py
+2168 INFO: Processing pre-find-module-path hook 'hook-tkinter.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks\\pre_find_module_path'
+2169 INFO: TclTkInfo: initializing cached Tcl/Tk info...
+2366 INFO: Processing standard module hook 'hook-_tkinter.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+2370 INFO: Processing standard module hook 'hook-scipy.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+2797 INFO: Processing standard module hook 'hook-numpy.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+2957 INFO: Processing standard module hook 'hook-platform.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+2978 INFO: Processing standard module hook 'hook-_ctypes.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+3079 INFO: Processing standard module hook 'hook-sysconfig.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+3206 INFO: Processing standard module hook 'hook-webbrowser.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+3539 INFO: Processing standard module hook 'hook-difflib.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+3633 INFO: Processing standard module hook 'hook-multiprocessing.util.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+3668 INFO: Processing standard module hook 'hook-xml.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+4179 INFO: Processing pre-safe-import-module hook 'hook-typing_extensions.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+4180 INFO: SetuptoolsInfo: initializing cached setuptools info...
+4670 INFO: Processing standard module hook 'hook-charset_normalizer.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+5862 INFO: Processing standard module hook 'hook-xml.etree.cElementTree.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+6363 INFO: Processing pre-safe-import-module hook 'hook-distutils.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+6364 INFO: Processing pre-find-module-path hook 'hook-distutils.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks\\pre_find_module_path'
+6366 INFO: Processing standard module hook 'hook-distutils.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+6380 INFO: Processing standard module hook 'hook-_osx_support.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+6387 INFO: Processing standard module hook 'hook-distutils.util.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+6495 INFO: Processing standard module hook 'hook-setuptools.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+6545 INFO: Processing standard module hook 'hook-pkg_resources.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+7314 INFO: Processing standard module hook 'hook-pycparser.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+7453 INFO: Processing standard module hook 'hook-scipy.io.matlab.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+7699 INFO: Processing standard module hook 'hook-scipy.linalg.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+7772 INFO: Processing standard module hook 'hook-scipy.special._ufuncs.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+7831 INFO: Processing standard module hook 'hook-scipy.special._ellip_harm_2.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+7989 INFO: Processing standard module hook 'hook-scipy.spatial._ckdtree.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+8530 INFO: Processing standard module hook 'hook-scipy.sparse.csgraph.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+8692 INFO: Processing standard module hook 'hook-scipy.spatial.transform.rotation.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+9194 INFO: Processing standard module hook 'hook-scipy.stats._stats.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+10154 INFO: Analyzing hidden import 'importlib.resources'
+10159 INFO: Analyzing hidden import 'scipy.special.cython_special'
+10160 INFO: Analyzing hidden import 'tkinter.ttk'
+10187 INFO: Analyzing hidden import 'tkinter.filedialog'
+10202 INFO: Analyzing hidden import 'librosa'
+10203 INFO: Processing standard module hook 'hook-librosa.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+10422 INFO: Processing pre-safe-import-module hook 'hook-packaging.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+10502 INFO: Analyzing hidden import 'librosa.core'
+10503 INFO: Analyzing hidden import 'librosa.feature'
+10504 INFO: Analyzing hidden import 'librosa.filters'
+10514 INFO: Processing standard module hook 'hook-numba.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+10530 INFO: Processing standard module hook 'hook-llvmlite.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+12683 INFO: Processing pre-safe-import-module hook 'hook-win32com.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\pre_safe_import_module'
+13349 INFO: Processing standard module hook 'hook-cloudpickle.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+13601 INFO: Processing pre-safe-import-module hook 'hook-platformdirs.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+13607 INFO: Processing standard module hook 'hook-platformdirs.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+13643 INFO: Processing standard module hook 'hook-urllib3.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+13680 INFO: Processing pre-safe-import-module hook 'hook-backports.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+13913 INFO: Processing standard module hook 'hook-certifi.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+13957 INFO: Analyzing hidden import 'librosa.onset'
+13991 INFO: Processing standard module hook 'hook-soundfile.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+13999 INFO: Processing pre-safe-import-module hook 'hook-gi.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+14101 INFO: Analyzing hidden import 'librosa.segment'
+14110 INFO: Processing standard module hook 'hook-sklearn.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+14566 INFO: Processing standard module hook 'hook-sklearn.utils.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+14624 INFO: Processing standard module hook 'hook-sklearn.externals.array_api_compat.numpy.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+14643 INFO: Processing standard module hook 'hook-sklearn.externals.array_api_compat.cupy.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+14648 INFO: Processing standard module hook 'hook-sklearn.externals.array_api_compat.torch.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+14671 INFO: Processing standard module hook 'hook-sklearn.externals.array_api_compat.dask.array.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+14772 INFO: Processing standard module hook 'hook-sklearn.metrics.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+16117 INFO: Processing standard module hook 'hook-sklearn.metrics.cluster.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+16189 INFO: Processing standard module hook 'hook-sklearn.cluster.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+16257 INFO: Processing standard module hook 'hook-sklearn.metrics.pairwise.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+16364 INFO: Processing standard module hook 'hook-sklearn.neighbors.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+16433 INFO: Processing standard module hook 'hook-sklearn.linear_model.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+17003 INFO: Analyzing hidden import 'librosa.decompose'
+17007 INFO: Analyzing hidden import 'librosa.effects'
+17014 INFO: Analyzing hidden import 'sklearn.utils._weight_vector'
+17014 ERROR: Hidden import 'sklearn.utils._weight_vector' not found
+17014 INFO: Analyzing hidden import 'pyrubberband'
+17017 INFO: Analyzing hidden import 'pyrubberband.pyrubberband'
+17017 ERROR: Hidden import 'pyrubberband.pyrubberband' not found
+17017 INFO: Analyzing hidden import 'win32ctypes'
+17018 INFO: Processing module hooks (post-graph stage)...
+17064 WARNING: Hidden import "pycparser.lextab" not found!
+17064 WARNING: Hidden import "pycparser.yacctab" not found!
+17074 WARNING: Hidden import "sklearn.utils._weight_vector" not found!
+17074 WARNING: Hidden import "sklearn.utils._weight_vector" not found!
+17075 WARNING: Hidden import "sklearn.utils._heap" not found!
+17075 WARNING: Hidden import "sklearn.utils._sorting" not found!
+17075 WARNING: Hidden import "sklearn.utils._vector_sentinel" not found!
+17075 WARNING: Hidden import "sklearn.utils._typedefs" not found!
+17075 WARNING: Hidden import "sklearn.neighbors._quad_tree" not found!
+17075 INFO: Processing standard module hook 'hook-sklearn.tree.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+17101 WARNING: Hidden import "sklearn.neighbors._partition_nodes" not found!
+17101 WARNING: Hidden import "sklearn.tree._partitioner" not found!
+17101 WARNING: Hidden import "sklearn.utils._cython_blas" not found!
+17101 WARNING: Hidden import "sklearn._cyutility" not found!
+17280 WARNING: Hidden import "scipy.special._cdflib" not found!
+17431 INFO: Processing standard module hook 'hook-_tkinter.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks'
+17449 INFO: Performing binary vs. data reclassification (1270 entries)
+17520 INFO: Looking for ctypes DLLs
+17608 INFO: Analyzing run-time hooks ...
+17614 INFO: Including run-time hook 'pyi_rth_inspect.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+17616 INFO: Including run-time hook 'pyi_rth_pkgutil.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+17617 INFO: Including run-time hook 'pyi_rth_multiprocessing.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+17618 INFO: Including run-time hook 'pyi_rth_pkgres.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+17619 INFO: Including run-time hook 'pyi_rth_setuptools.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+17620 INFO: Including run-time hook 'pyi_rth__tkinter.py' from 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+17663 INFO: Creating base_library.zip...
+17698 INFO: Looking for dynamic libraries
+18864 INFO: Extra DLL search directories (AddDllDirectory): ['C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\numpy.libs', 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\scipy.libs', 'C:\\program1\\python\\UtauAudioNormalizer\\.venv\\lib\\site-packages\\llvmlite.libs']
+18864 INFO: Extra DLL search directories (PATH): []
+20891 INFO: Warnings written to C:\program1\python\UtauAudioNormalizer\build\utau_volume_normalizer\warn-utau_volume_normalizer.txt
+21035 INFO: Graph cross-reference written to C:\program1\python\UtauAudioNormalizer\build\utau_volume_normalizer\xref-utau_volume_normalizer.html
+21090 INFO: checking PYZ
+21090 INFO: Building PYZ because PYZ-00.toc is non existent
+21090 INFO: Building PYZ (ZlibArchive) C:\program1\python\UtauAudioNormalizer\build\utau_volume_normalizer\PYZ-00.pyz
+22023 INFO: Building PYZ (ZlibArchive) C:\program1\python\UtauAudioNormalizer\build\utau_volume_normalizer\PYZ-00.pyz completed successfully.
+22049 INFO: checking PKG
+22049 INFO: Building PKG because PKG-00.toc is non existent
+22049 INFO: Building PKG (CArchive) utau_volume_normalizer.pkg
+22076 INFO: Building PKG (CArchive) utau_volume_normalizer.pkg completed successfully.
+22077 INFO: Bootloader C:\program1\python\UtauAudioNormalizer\.venv\lib\site-packages\PyInstaller\bootloader\Windows-64bit-intel\run.exe
+22077 INFO: checking EXE
+22077 INFO: Building EXE because EXE-00.toc is non existent
+22077 INFO: Building EXE from EXE-00.toc
+22077 INFO: Copying bootloader EXE to C:\program1\python\UtauAudioNormalizer\build\utau_volume_normalizer\utau_volume_normalizer.exe
+22123 INFO: Copying icon to EXE
+22161 INFO: Copying 0 resources to EXE
+22161 INFO: Embedding manifest in EXE
+22199 INFO: Appending PKG archive to EXE
+22269 INFO: Fixing EXE headers
+22585 INFO: Building EXE from EXE-00.toc completed successfully.
+22595 INFO: checking COLLECT
+22596 INFO: Building COLLECT because COLLECT-00.toc is non existent
+22596 INFO: Building COLLECT COLLECT-00.toc
+23697 INFO: Building COLLECT COLLECT-00.toc completed successfully.
+23717 INFO: Build complete! The results are available in: C:\program1\python\UtauAudioNormalizer\dist
+[キャッシュ削除] PyInstaller実行後の build/ フォルダを削除しました
+--- PyInstaller ビルド完了 ---
+
+--- [Step 3] 成果物の整理と配置 ---
+[コピー完了] plugins_pyd/ -> UtauVolumeNormalizer\Plugins/ (.pyd プラグイン成果物)
+[クリーンアップ] 一時フォルダ plugins_pyd/ を削除しました。
+
+=== すべてのビルド・配置処理が正常に完了しました！ ===

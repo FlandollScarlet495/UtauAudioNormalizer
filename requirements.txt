@@ -1,2 +1,7 @@
 librosa
 pyrubberband
+cython
+pyinstaller
+numpy
+scipy
+soundfile

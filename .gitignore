@@ -32,13 +32,24 @@ env/
 *.swp
 *.sublime-project
 
-# オーディオ処理時のバックアップ・一時フォルダ・ログ
+# オーディオ処理時のバックアップ・一時フォルダ・ログまたは実行ファイルの入ったフォルダ
 *_backup_*/
 PluginsZipper/
 normalize_log.txt
+logs/
 Plugins/rubberband/*.exe
 Plugins/rubberband/*.dll
 Plugins/rubberband/COPYING.txt
+UtauVolumeNormalizer/
+core_python_file/*.c
+core/
+core_pyd/
+plugins/
+plugins_pyd/
+_test_sandbox_wavs/
 *.tmp
 *.bak
 *.exe
+案
+次プロンプト.txt
+list.txt

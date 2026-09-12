@@ -1,172 +1,133 @@
-# UTAU Audio Normalizer (UTAU音源用 高機能オーディオノーマライザー)
+# UTAU Audio Normalizer（UTAU音源用オーディオノーマライザー）
 
-UTAU音源の制作・調整・バッチ処理に最適化された高機能オーディオ処理ツールです。  
-GUIによる直感的な操作と、コマンドライン（CLI）からの柔軟なバッチ処理の両方に対応しています。独自のプラグイン機構（`.py` / `.pyd` / `.uvn`）を備えており、高い拡張性を実現しています。
-
----
+UTAU音源の制作・調整・バッチ処理向けの音声処理ツールです。Tkinter GUIとCLIに対応し、WAVファイルのノーマライズ、形式変換、ピッチ・速度変更、プラグイン処理を実行できます。
 
 ## 主な機能
 
-- **高度な音量平均化 (ノーマライズ)**:
-  - Peak（ピーク / dBFS）モード
-  - RMS（実効値 / dB RMS）モード（※音割れを防止する自動リミッター機能付き）
-- **UTAU最適化プリセット**: ワンクリックでUTAU標準フォーマット（16-bit PCM / 44.1kHz / モノラル）に統一可能。
-- **音声処理オプション**:
-  - DCオフセット除去（オン/オフ切替可能）
-  - 前後の無音区間トリミング
-  - サンプリングレート変換（多項式リサンプル）＆ モノラル化
-  - ピッチシフト（半音単位）およびタイムストレッチ（速度変更）
-- **プラグイン拡張機構**:
-  - `Plugins/` 内の `.zip` 自動解凍および `PluginsZipper/` への展開・環境パス（PATH/DLL）自動登録
-  - `.py` / `.pyd` スクリプトからのカスタム処理フック呼び出し（`UI_SCHEMA` によるGUI連携対応）
-  - `.uvn` 独自定義ファイルの解析とカスタム波形処理フィルターの適用
-- **安全設計**:
-  - 処理前の自動タイムスタンプ付きバックアップ機能 (`_backup_YYYYMMDD_HHMMSS`)
-  - 出力結果を確認できる試行実行（Dry-Run）モード
-  - 処理ログのテキスト出力 (`normalize_log.txt`)
+- Peak（ピーク / dBFS）またはRMS（実効値 / dB RMS）によるノーマライズ
+- RMSモードの音割れ回避リミッター
+- UTAU最適化プリセット（16-bit PCM / 44.1 kHz / モノラル）
+- DCオフセット除去、前後の無音トリミング、モノラル化
+- 多項式リサンプルによるサンプリングレート変換
+- ピッチシフトとタイムストレッチ
+- `Plugins/` 以下の`.py`、`.pyd`、`.dll`、`.zip`、`.uvn`拡張
+- タイムスタンプ付きバックアップ、Dry-Run、`normalize_log.txt`出力
 
----
+プラグインの詳細仕様は [Plugins/utau_volume_normalizer_plugin_decoder/README_PLUGINS.md](Plugins/utau_volume_normalizer_plugin_decoder/README_PLUGINS.md) を参照してください。
 
 ## フォルダ構成
 
 ```text
 UtauAudioNormalizer/
-├── Plugins/                                  # ユーザープラグイン格納ディレクトリ
-│   ├── rubberband/
-│   └── utau_volume_normalizer_plugin/
-│       ├── README_PLUGINS.md
-│       └── utau_volume_normalizer_plugin.py
-├── main.py
-├── utau_volume_normalizer.py                 # メインエントリポイント (GUI/CLI兼用)
-├── uvn_audio.py                              # オーディオ処理エンジン & バックアップ機能
-├── uvn_utility.py                            # フィルター関数 & プラグイン環境構築
-└── uvn_gui.py                                # TkinterベースのGUIロジック
-
+├── Plugins/                                  # ユーザープラグイン
+│   ├── rubberband/                           # rubberband実行ファイルの配置先
+│   ├── testplugin/                           # .uvnサンプル
+│   ├── testplugindefine/                     # Pythonユーティリティサンプル
+│   ├── Language/                             # プラグイン個別翻訳
+│   │   └── [PluginName]/ja-jp.lang / en-us.lang
+│   └── utau_volume_normalizer_plugin_decoder/ # プラグイン仕様書
+├── core_python_file/                         # 開発用Pythonモジュール
+│   ├── uvn_audio.py
+│   ├── uvn_gui.py
+│   ├── uvn_utility.py
+│   └── uvn_plugin_runtime/                   # .uvnデコーダーソース
+│       ├── __init__.py
+│       └── decoder.py
+├── core/                                     # ビルド済み.pydの配置先
+│   └── uvn_plugin_runtime/                   # ビルド時に同期
+├── Language/                                 # 言語リソース（.lang）
+│   ├── ja-jp.lang
+│   └── en-us.lang
+├── utau_volume_normalizer.py                 # GUI/CLIエントリポイント
+├── setup.py                                  # CythonとPyInstallerによるビルド
+├── utau_volume_normalizer_spec/              # PyInstaller spec
+├── requirements.txt
+└── README_DEV.md
 ```
 
-※実行時に `Plugins/` 内のZIP展開先として `PluginsZipper/` フォルダが自動作成されます。`uvn_utility.py` と `utau_volume_normalizer_plugin_decoder.py` の共通処理により、モジュール間の依存関係を安全に保持し、ライブラリの二重読み込みやパスエラーを防止します。
+`Plugins/` 以下は再帰的に走査されます。ZIPは展開されず、ZIP自体をPythonの検索パスへ追加して内部ファイルを読み込みます。通常、プラグインの配置先として`Plugins/`直下またはそのサブフォルダを使用してください。
 
----
+`Language/`には画面とログの翻訳リソースを置きます。ファイル形式はUTF-8の`.lang`（1行1キーの`key=value`形式）です。GUI上の言語選択、CLIの`--language ja-jp|en-us`、または環境変数`UTAU_LANGUAGE`で切り替えられます。
 
-## 動作環境・必要ライブラリ
+実行ごとの標準出力・エラー出力は、ルートの`logs/uvn_YYYYMMDD_HHMMSS.log`へ保存されます。プラグインの読み込み結果、全WAVファイルの処理結果、エラー、終了コードも同じファイルに記録されます。
 
-### 必須環境
+## 動作環境と依存ライブラリ
 
-- **OS**: Windows (付属のバイナリ使用時)
-- **Python**: 3.8 以上
-- **依存ライブラリ**:
+- Python 3.8以上のCPython
+- `numpy`、`scipy`
+- GUI使用時: Tkinter
+- ピッチ・速度変更時: `librosa` または `pyrubberband`とrubberband実行ファイル
+
+開発環境では仮想環境を作成して依存ライブラリをインストールします。
 
 ```bash
-pip install numpy scipy
-
+python -m venv .venv
+.venv\Scripts\activate
+python -m pip install -r requirements.txt
 ```
 
-### 任意（ピッチ・速度変更機能を利用する場合）
-
-ピッチシフトや速度変更処理を行うには、以下のいずれかのライブラリが必要です。
-
-- `pyrubberband`（推奨：`Plugins/rubberband/` 内のバイナリを使用）
-- `librosa`（フォールバック用）
-
-```bash
-pip install -r requirements.txt
-
-```
-
----
+`requirements.txt`には実行時依存に加えて、CythonとPyInstallerも含まれます。
 
 ## 使い方
 
-### 1. GUI モード (グラフィカル表示)
+### GUI
 
-引数なしで実行するとGUI画面が立ち上がります。
+引数なしで起動するとGUIが表示されます。
 
 ```bash
 python utau_volume_normalizer.py
-
 ```
 
-1. **対象フォルダ選択**: WAVファイルが入ったフォルダを指定します。
-2. **ノーマライズ設定**: 方式（Peak/RMS）と目標値（dB）を入力します。
-3. **変換＆編集オプション**: 必要に応じて「UTAU最適化プリセット」、ピッチ・速度変更、無音トリミングや「DCオフセット除去」などの設定を行います。
-4. **処理を開始する**: ボタンを押すとバックグラウンドでバッチ処理が実行され、進捗バーとログが表示されます。
+対象フォルダを選択し、ノーマライズ方式、目標値、出力先、変換オプションを指定して実行します。入力フォルダ直下の`*.wav`が処理対象です。既定では入力フォルダ内に`音源`フォルダを作成し、処理前にバックアップを作成します。
 
----
+### CLI
 
-### 2. CLI モード (コマンドライン)
-
-引数やオプションを指定して実行すると、自動的にCLIモードとして動作します。
+CLIでは入力フォルダを必ず指定します。オプション引数を指定するとCLIとして判定されるため、`--command-line-mode`を明示する場合も入力フォルダを付けてください。
 
 ```bash
-python utau_volume_normalizer.py <対象フォルダパス> [オプション]
-
+python utau_volume_normalizer.py "C:\path\to\wav_folder" [オプション]
 ```
 
-#### 主なコマンドラインオプション
-
-| オプション | 短縮形 | 説明 | デフォルト |
+| オプション | 短縮形 | 説明 | 既定値 |
 | --- | --- | --- | --- |
-| `input` | - | **[必須]** 対象となるWAVファイルが含まれるフォルダのパス | - |
-| `--mode` | `-m` | ノーマライズ方式 (`peak` または `rms`) | `peak` |
-| `--target` | `-t` | 目標値 (dB) | Peak: -1.0 / RMS: -20.0 |
-| `--outdir` | `-o` | 出力先フォルダ名 | `音源` |
-| `--utau-preset` | - | UTAU最適化 (16bit / 44.1kHz / モノラル 固定) | Off |
-| `--sample-rate` | `-s` | サンプリングレートの変換 (例: `44100`) | 自動設定 |
-| `--mono` | - | モノラル化 | Off |
-| `--trim` | - | 前後の無音区間をトリミング | Off |
-| `--no-dc` | - | DCオフセット除去を無効化 | Off |
-| `--pitch` | `-p` | ピッチ変更 (半音単位, 例: `1.5`, `-2.0`) | `0.0` |
-| `--speed` | - | 再生速度変更 (倍率, 例: `1.2`) | `1.0` |
-| `--nobackup` | - | 自動バックアップ作成をスキップ | Off |
-| `--dry-run` | - | ファイル出力を行わずに処理内容のみテスト実行 | Off |
-| `--command-line-mode` | - | 明示的にCLIモードで起動 | Off |
+| `input` | - | WAVファイルを含む入力フォルダ（必須） | - |
+| `--mode` | `-m` | `peak`または`rms` | `peak` |
+| `--target` | `-t` | 目標値（dB） | Peak: `-1.0` / RMS: `-20.0` |
+| `--outdir` | `-o` | 出力フォルダ名 | `音源` |
+| `--sample-rate` | `-s` | 出力サンプリングレート（Hz） | 変更なし |
+| `--mono` | - | モノラル化 | 無効 |
+| `--trim` | - | 前後の無音区間をトリミング | 無効 |
+| `--utau-preset` | - | 16-bit / 44.1 kHz / モノラルへ変換 | 無効 |
+| `--no-dc` | - | DCオフセット除去を無効化 | 除去する |
+| `--pitch` | `-p` | ピッチ変更（半音） | `0.0` |
+| `--speed` | - | 速度倍率 | `1.0` |
+| `--nobackup` | - | 自動バックアップを無効化 | 作成する |
+| `--dry-run` | - | ファイルを書き込まずに処理 | 無効 |
+| `--runmode` | - | `dev`または`prod`を選択 | 自動判定 |
+| `--command-line-mode` | - | CLIモードを明示 | 自動判定 |
+| `--language` | - | 表示言語（`ja-jp`または`en-us`） | OSのシステム言語 |
 
-#### 使用例
-
-- **基本処理（Peak -1.0dB）**
+使用例:
 
 ```bash
 python utau_volume_normalizer.py "C:\path\to\wav_folder" -m peak -t -1.0
-
-```
-
-- **UTAU最適化 ＋ バックアップあり出力**
-
-```bash
 python utau_volume_normalizer.py "D:\UTAU\VoiceBank" --utau-preset -o "音源_normalized"
-
+python utau_volume_normalizer.py "C:\path\to\wav_folder" -m rms -t -20.0 --dry-run
+python utau_volume_normalizer.py "C:\path\to\wav_folder" -p 2.0 --speed 1.1
 ```
 
-- **RMS -20dB 変換 ＋ UTAU最適化**
+## プラグイン
 
-```bash
-python utau_volume_normalizer.py "C:\path\to\wav_folder" -m rms -t -20.0 --utau-preset
+起動時に`Plugins/`以下が走査されます。
 
-```
+- `.uvn`: Pythonスクリプト形式または限定的なINI形式の音声処理フック
+- `.py`: `register_uvn_utilities()`が返す辞書による共有ユーティリティ登録。`register_plugin()`にも対応
+- `.pyd`: Python拡張モジュール。`register_uvn_utilities()`または`register_plugin()`に対応
+- `.dll`: `process_audio_c`をエクスポートしている場合、`dll_<ファイル名>`として登録
+- `.zip`: 展開せず、内部の対応ファイルを読み込み
 
-- **ピッチを2半音上げ、速度を1.1倍にしてテスト実行（Dry-Run）**
-
-```bash
-python utau_volume_normalizer.py "C:\path\to\wav_folder" -p 2.0 --speed 1.1 --dry-run
-
-```
-
----
-
-## プラグイン拡張仕様
-
-`Plugins/` フォルダ配下に置かれた拡張ファイルは、起動時に自動検出・読み込みされます。
-
-- **ZIPプラグイン (`.zip`)**: `Plugins/` 内の `.zip` ファイルは `PluginsZipper/` に自動解凍・展開され、環境パス（PATH/DLL）へ登録のうえロードされます。
-- **Pythonプラグイン (`.py` / `.pyd`)**:
-- `register_plugin()` や `parse_uvn_file()` 関数を定義することで、オーディオデータ処理フックを追加できます。
-- `register_uvn_utilities()` による組み込みユーティリティ関数の拡張が可能です。
-- スクリプト側で `UI_SCHEMA` を定義することで、GUI（`uvn_gui.py`）上に設定項目を自動反映し、`plugin_params` 経由で設定値を保持できます。
-
-- **.uvn スクリプト**: 独自形式のプラグイン定義ファイルを登録済みパーサーを介して読み込み、波形処理フィルターを自由に適用できます。
-
----
+Python形式の`.uvn`では`UI_SCHEMA`によるGUI入力を定義できます。INI形式は`to_mono`、`gain_offset_db`、`low_cut_hz`に対応します。プラグインはサンドボックスではなく通常のPythonコードとして実行されるため、信頼できるファイルだけを使用してください。
 
 ## ライセンス
 
-本スクリプトおよびプロジェクト内のプラグイン（`Plugins/` 配下）に含まれるサードパーティ製ライブラリのライセンスについては、各フォルダ内のライセンスファイル（`COPYING.txt`, `LICENSE`, `README_LICENSES.md` 等）をご確認ください。
+本プロジェクトはMIT Licenseです。`Plugins/`に含まれるサードパーティ製ソフトウェアについては、各フォルダのライセンスファイルを確認してください。

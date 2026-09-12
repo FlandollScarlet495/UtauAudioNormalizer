@@ -1,14 +1,15 @@
 # Plugins/testplugin/testplugin.uvn
 
 PLUGIN_NAME = "LowCut & Dynamic Gain"
+DISPLAY_NAME = "@plugin.name"
 ENABLED = True  # Trueで有効化、Falseでスキップ
 
 # --- GUI設定定義スキーマ ---
 # GUI画面に自動で入力フォームを構築します
 UI_SCHEMA = [
-    {"key": "cutoff", "label": "ローカット周波数 (Hz)", "default": 80.0, "type": "entry"},
-    {"key": "gain_db", "label": "追加ゲイン (dB)", "default": 1.5, "type": "entry"},
-    {"key": "enable_gate", "label": "ノイズゲート有効化", "default": True, "type": "checkbox"}
+    {"key": "cutoff", "label": "@ui.cutoff", "default": 80.0, "type": "entry"},
+    {"key": "gain_db", "label": "@ui.gain_db", "default": 1.5, "type": "entry"},
+    {"key": "enable_gate", "label": "@ui.enable_gate", "default": True, "type": "checkbox"}
 ]
 
 def ping():
